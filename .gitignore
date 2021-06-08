@@ -1,3 +1,7 @@
+# Custom Ignores
+/tests/pnpm-lock.yaml
+/tests/package.json
+
 # Logs
 logs
 *.log

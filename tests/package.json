@@ -1,0 +1,5 @@
+{
+  "name": "tests",
+  "version": "1.0.0",
+  "description": "A fake package.json to help with testing"
+}

@@ -1,7 +1,8 @@
 const { tempInstaller } = require('./dist/temp-install')
 
 async function run() {
-  const installer = await tempInstaller()
+  const installer = tempInstaller()
+  console.log(installer, tempInstaller)
   await installer.install('react')
   console.log(installer.require('react'))
 }

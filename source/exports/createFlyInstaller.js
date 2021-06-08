@@ -1,9 +1,7 @@
 import FlyInstaller from '../FlyInstaller'
 
-async function createFlyInstaller(...args) {
-  const installer = new FlyInstaller(...args)
-  await installer.setup()
-  return installer
+function createFlyInstaller(...args) {
+  return new FlyInstaller(...args)
 }
 
 export default createFlyInstaller

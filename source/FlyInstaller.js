@@ -30,10 +30,6 @@ class FlyInstaller {
     sanitize(options, optionsFormat)
     this.options = { ...defaultOptions, ...options }
   }
-  async setup() {
-    if ((await exists(this.directory)) !== true)
-      throw new Error('The install directory does not exist')
-  }
   require(packageName) {
     const { useLocalFallback = true } = this.options
     let output = null
@@ -64,9 +60,25 @@ class FlyInstaller {
       }
     }
   }
-  install(packageName) {
+  install(packageName, options = {}) {
     //if (this.directory === null) throw new Error('No directory specified')
-    return installPackage(this.options.packageManager, packageName, this.directory)
+    return installPackage(
+      this.options.packageManager,
+      packageName,
+      this.directory,
+      'install',
+      options
+    )
+  }
+  uninstall(packageName, options = {}) {
+    //if (this.directory === null) throw new Error('No directory specified')
+    return installPackage(
+      this.options.packageManager,
+      packageName,
+      this.directory,
+      'uninstall',
+      options
+    )
   }
 }
 

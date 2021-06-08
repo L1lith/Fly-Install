@@ -1,14 +1,12 @@
-import { dir } from 'tmp-promise'
-import { writeFile } from 'fs/promises'
+import { dirSync } from 'tmp'
+import { writeFileSync } from 'fs'
 import { join } from 'path'
 import FlyInstaller from '../FlyInstaller'
 
-async function createTempInstaller(...args) {
-  const directory = (await dir()).path
-  await writeFile(join(directory, 'package.json'), JSON.stringify({ name: 'fly-require-temp' }))
-  const installer = new FlyInstaller(directory, ...args)
-  await installer.setup()
-  return installer
+function createTempInstaller(...args) {
+  const directory = dirSync().name
+  writeFileSync(join(directory, 'package.json'), JSON.stringify({ name: 'fly-require-temp' }))
+  return new FlyInstaller(directory, ...args)
 }
 
 export default createTempInstaller

@@ -29,5 +29,5 @@ describe('The fly installer functions properly', () => {
   })
   it('can uninstall the dependency', async () => {
     await installer.uninstall('ms')
-  })
+  }).timeout(60 * 1000) // Wait at least one minute before timing out
 })

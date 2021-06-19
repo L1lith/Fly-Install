@@ -5,9 +5,6 @@ const { join } = require('path')
 
 let installer
 describe('The fly installer functions properly', () => {
-  before(function () {
-    // runs before all tests in this file regardless where this line is defined.
-  })
   it('can install a package successfully', async () => {
     installer = flyInstaller(join(__dirname, '..'))
     await installer.install('ms')

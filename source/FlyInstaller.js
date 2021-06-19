@@ -60,6 +60,18 @@ class FlyInstaller {
       }
     }
   }
+  async installRequire(packageName) {
+    try {
+      return await this.require(packageName)
+    } catch (error) {
+      if (error.message === 'No source specified') {
+        // Continue
+      } else {
+        throw error
+      }
+    }
+    return await this.install(packageName)
+  }
   install(packageName, options = {}) {
     //if (this.directory === null) throw new Error('No directory specified')
     return installPackage(

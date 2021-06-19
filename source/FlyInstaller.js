@@ -64,7 +64,7 @@ class FlyInstaller {
     try {
       return await this.require(packageName)
     } catch (error) {
-      if (error.message === 'No source specified') {
+      if (error?.message === 'No source specified') {
         // Continue
       } else {
         throw error

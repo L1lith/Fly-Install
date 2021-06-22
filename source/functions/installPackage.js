@@ -17,15 +17,17 @@ function installPackage(
     throw new Error('Please supply a valid directory')
   }
   if (!validModes.includes(mode)) throw new Error('Invalid Mode Specified')
-  const { silent = false } = options
+  const { silent } = options
   const execOptions = {
     cwd: directory
   }
   if (silent === true) {
     //execOptions.silent = true
     execOptions.stdio = 'pipe'
-  } else {
+  } else if (silent === false) {
     execOptions.stdio = 'inherit'
+  } else {
+    execOptions.stdio = ['pipe', 'ignore', 'inherit'] // default to showing errors only
   }
   return exec(provider + ' ' + mode + ' ' + packageName, execOptions)
 }

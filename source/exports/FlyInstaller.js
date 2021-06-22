@@ -35,8 +35,6 @@ class FlyInstaller {
   }
   require(packageName) {
     const { useLocalFallback = true } = this.options
-    let output = null
-    let error = null
     if (useLocalFallback === true) {
       try {
         return require(packageName)

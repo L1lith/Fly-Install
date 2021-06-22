@@ -17,7 +17,7 @@ function installPackage(
     throw new Error('Please supply a valid directory')
   }
   if (!validModes.includes(mode)) throw new Error('Invalid Mode Specified')
-  const { silent = true } = options
+  const { silent = false } = options
   const execOptions = {
     cwd: directory
   }

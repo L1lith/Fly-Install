@@ -27,4 +27,10 @@ describe('The temp installer functions properly', () => {
   it('can uninstall the dependency', async () => {
     await installer.uninstall('ms')
   }).timeout(60 * 1000) // Wait at least one minute before timing out
+  it('can installRequire successfully', async () => {
+    await installer.installRequire('chalk')
+  }).timeout(60 * 1000) // Wait at least one minute before timing out
+  after(() => {
+    installer.uninstall('chalk')
+  })
 })

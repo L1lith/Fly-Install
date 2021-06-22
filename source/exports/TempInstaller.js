@@ -12,4 +12,4 @@ class TempInstaller extends FlyInstaller {
   }
 }
 
-export default protectClass(TempInstaller)
+export default TempInstaller

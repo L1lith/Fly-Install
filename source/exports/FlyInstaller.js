@@ -95,4 +95,4 @@ class FlyInstaller {
   }
 }
 
-export default protectClass(FlyInstaller)
+export default FlyInstaller

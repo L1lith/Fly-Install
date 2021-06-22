@@ -10,8 +10,8 @@ describe('The library is exported successfully', () => {
   it('should export the correct output', () => {
     expect(
       details(flyInstall, {
-        flyInstaller: Function,
-        tempInstaller: Function
+        FlyInstaller: Function,
+        TempInstaller: Function
       })
     ).to.equal(null) // Expects there to be no formatting errors with the exports compared to the supplied format
   })

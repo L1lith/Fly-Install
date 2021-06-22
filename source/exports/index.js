@@ -1,4 +1,4 @@
-import flyInstaller from './createFlyInstaller'
-import tempInstaller from './createTempInstaller'
+import FlyInstaller from './createFlyInstaller'
+import TempInstaller from './TempInstaller'
 
-export { flyInstaller, tempInstaller }
+export { FlyInstaller, TempInstaller }

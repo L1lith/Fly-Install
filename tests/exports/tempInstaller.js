@@ -1,12 +1,12 @@
 const { expect } = require('chai')
-const { tempInstaller } = require('../../dist/fly-install')
+const { TempInstaller } = require('../../dist/fly-install')
 const { readFile } = require('fs/promises')
 const { join } = require('path')
 
 let installer
 describe('The temp installer functions properly', () => {
   it('can install a package successfully', async () => {
-    installer = tempInstaller()
+    installer = new TempInstaller()
     await installer.install('ms')
   }).timeout(60 * 1000) // Wait at least one minute before timing out
   it('can require the installed package successfully', async () => {

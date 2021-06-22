@@ -1,7 +1,7 @@
 {
   "name": "fly-install",
   "version": "0.0.1",
-  "description": "Tool for managing NPM dependencies programmatically",
+  "description": "Manage NPM dependencies during runtime",
   "main": "./dist/fly-install.js",
   "source": "./source/exports/index.js",
   "dependencies": {
@@ -32,7 +32,7 @@
     "/dist/temp-install.js",
     "/dist/temp-install.js.map"
   ],
-  "keywords": [],
+  "keywords": ["install", "npm", "dependencies", "management", "programmatic"],
   "author": "05L1",
   "license": "MIT"
 }

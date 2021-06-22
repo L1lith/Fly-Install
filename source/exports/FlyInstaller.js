@@ -1,8 +1,9 @@
 import exists from 'path-exists'
 import { sanitize } from 'sandhands'
-import installPackage from './functions/installPackage'
-import getPackageEntry from './functions/getPackageEntry'
+import installPackage from '../functions/installPackage'
+import getPackageEntry from '../functions/getPackageEntry'
 import { join } from 'path'
+import protectClass from '../functions/protectClass'
 
 const packageManagers = ['pnpm', 'npm']
 
@@ -23,7 +24,9 @@ const defaultOptions = {
 }
 
 class FlyInstaller {
-  constructor(directory = null, options = {}) {
+  constructor(...args) {
+    if (args.length > 2) throw new Error('Received too many arguments')
+    const [directory = null, options = {}] = args
     if (directory !== null && typeof directory !== 'string')
       throw new Error('Directory must be a string or null')
     this.directory = directory === null ? process.cwd() : directory
@@ -94,4 +97,4 @@ class FlyInstaller {
   }
 }
 
-export default FlyInstaller
+export default protectClass(FlyInstaller)

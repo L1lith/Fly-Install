@@ -4,6 +4,7 @@ import installPackage from '../functions/installPackage'
 import getPackageEntry from '../functions/getPackageEntry'
 import { join } from 'path'
 import protectClass from '../functions/protectClass'
+import autoBind from 'auto-bind'
 
 const packageManagers = ['pnpm', 'npm']
 
@@ -32,6 +33,7 @@ class FlyInstaller {
     this.directory = directory === null ? process.cwd() : directory
     sanitize(options, optionsFormat)
     this.options = { ...defaultOptions, ...options }
+    autoBind(this)
   }
   require(packageName) {
     const { useLocalFallback = true } = this.options
@@ -92,6 +94,30 @@ class FlyInstaller {
       'uninstall',
       options
     )
+  }
+  patchRequire(moduleClass = null) {
+    if (moduleClass?.name !== 'Module') throw new Error('Please supply a valid Module to patch')
+    const originalRequire = moduleClass.prototype.require
+    const ourRequire = this.require
+
+    const newRequire = function (...args) {
+      try {
+        return ourRequire(args[0])
+      } catch (err) {
+        console.error(err)
+      }
+      //do your thing here
+      return originalRequire.apply(this, args)
+    }
+    moduleClass.prototype.require = newRequire
+    return () => {
+      // Unbind Function
+      if (moduleClass.prototype.require === newRequire) {
+        moduleClass.prototype.require = oldRequire
+      } else {
+        throw new Error('Could not unbind')
+      }
+    }
   }
 }
 

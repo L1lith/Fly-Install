@@ -30,6 +30,15 @@ describe('The temp installer functions properly', () => {
   it('can installRequire successfully', async () => {
     await installer.installRequire('chalk')
   }).timeout(60 * 1000) // Wait at least one minute before timing out
+  it('can monkey patch the main require function', () => {
+    installer.patchRequire(require('module'))
+    //console.log('xxxxs')
+    //console.log(require('chalk'))
+
+    expect(() => {
+      require('chalk')
+    }).to.not.throw()
+  })
   after(() => {
     installer.uninstall('chalk')
   })

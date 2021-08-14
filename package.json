@@ -1,10 +1,11 @@
 {
   "name": "fly-install",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Manage NPM dependencies during runtime",
   "main": "./dist/fly-install.js",
   "source": "./source/exports/index.js",
   "dependencies": {
+    "auto-bind": "^4.0.0",
     "exec-sh": "^0.4.0",
     "path-exists": "^4.0.0",
     "sandhands": "^1.8.9",
@@ -26,13 +27,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/L1lith/Liliths-Templates.git"
+    "url": "git+https://github.com/L1lith/Fly-Install.git"
   },
   "files": [
-    "/dist/temp-install.js",
-    "/dist/temp-install.js.map"
+    "/dist/fly-install.js",
+    "/dist/fly-install.js.map"
   ],
-  "keywords": ["install", "npm", "dependencies", "management", "programmatic"],
+  "keywords": [
+    "install",
+    "npm",
+    "dependencies",
+    "management",
+    "programmatic"
+  ],
   "author": "05L1",
   "license": "MIT"
 }

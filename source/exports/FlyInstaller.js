@@ -95,30 +95,30 @@ class FlyInstaller {
       options
     )
   }
-  patchRequire(moduleClass = null) {
-    if (moduleClass?.name !== 'Module') throw new Error('Please supply a valid Module to patch')
-    const originalRequire = moduleClass.prototype.require
-    const ourRequire = this.require
+  // patchRequire(moduleClass = null) {
+  //   if (moduleClass?.name !== 'Module') throw new Error('Please supply a valid Module to patch')
+  //   const originalRequire = moduleClass.prototype.require
+  //   const ourRequire = this.require
 
-    const newRequire = function (...args) {
-      try {
-        return ourRequire(args[0])
-      } catch (err) {
-        console.error(err)
-      }
-      //do your thing here
-      return originalRequire.apply(this, args)
-    }
-    moduleClass.prototype.require = newRequire
-    return () => {
-      // Unbind Function
-      if (moduleClass.prototype.require === newRequire) {
-        moduleClass.prototype.require = oldRequire
-      } else {
-        throw new Error('Could not unbind')
-      }
-    }
-  }
+  //   const newRequire = function (...args) {
+  //     try {
+  //       return ourRequire(args[0])
+  //     } catch (err) {
+  //       console.error(err)
+  //     }
+  //     //do your thing here
+  //     return originalRequire.apply(this, args)
+  //   }
+  //   moduleClass.prototype.require = newRequire
+  //   return () => {
+  //     // Unbind Function
+  //     if (moduleClass.prototype.require === newRequire) {
+  //       moduleClass.prototype.require = oldRequire
+  //     } else {
+  //       throw new Error('Could not unbind')
+  //     }
+  //   }
+  // }
 }
 
 export default FlyInstaller
